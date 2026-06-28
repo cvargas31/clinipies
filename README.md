@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CliniPies — Landing page para Google Ads
 
-## Getting Started
+Landing page de una sola página para **CliniPies · Quiropedia Clínica**, optimizada
+para convertir clics de Google Ads en conversaciones de **WhatsApp**.
 
-First, run the development server:
+Stack: **Next.js 16 + React 19 + TypeScript + Tailwind CSS v4**. Listo para **Vercel**.
+
+## Desarrollo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.local.example .env.local   # (opcional) añade tus IDs de tracking
+npm run dev                        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Cómo editar el contenido (sin tocar código)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Casi todo el texto y los datos viven en **`lib/clinic.ts`**:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Teléfono y WhatsApp**: `clinic.whatsapp` (solo dígitos, formato internacional),
+  `clinic.phoneDisplay`, `clinic.phoneHref` y `clinic.whatsappPrefill`.
+- **Dirección, horario y mapa**: `clinic.address`, `clinic.hours`, `clinic.mapEmbedUrl`.
+- **Servicios, tarifas, opiniones y equipo**: arrays `services`, `pricing`,
+  `testimonials`, `team`.
 
-## Learn More
+Los valores marcados con « » en los comentarios son **placeholders** que debes
+reemplazar por los reales (especialmente el número de WhatsApp y los precios).
 
-To learn more about Next.js, take a look at the following resources:
+### Fotos reales
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Hero**: coloca `public/hero.jpg` y sustituye el bloque decorativo en
+  `components/Hero.tsx` por `<Image src="/hero.jpg" fill className="object-cover" />`.
+- **Logo**: el logo es un SVG en `components/Logo.tsx`. Se puede reemplazar por
+  el archivo oficial si lo prefieres.
+- **Antes y después**: coloca `public/antes.jpg` y `public/despues.jpg` y pon
+  esas rutas en `beforeAfter.before` / `beforeAfter.after` (en `lib/clinic.ts`).
+  Mientras estén vacías se muestra un marcador de marca deslizable.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Tracking (Google Ads + Analytics)
 
-## Deploy on Vercel
+1. Copia `.env.local.example` a `.env.local`.
+2. Rellena:
+   - `NEXT_PUBLIC_GA_ID` → GA4 (`G-XXXXXXXXXX`)
+   - `NEXT_PUBLIC_GADS_ID` → Google Ads (`AW-XXXXXXXXXX`)
+   - `NEXT_PUBLIC_GADS_CONVERSION_LABEL` → etiqueta de la acción de conversión
+3. Cada clic en un botón de WhatsApp dispara:
+   - un evento GA4 `contacto_whatsapp`, y
+   - la conversión de Google Ads (`send_to: AW-.../etiqueta`).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Si las variables están vacías, el tracking se desactiva sin errores (útil en local).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Despliegue en Vercel
+
+1. Sube el repositorio a GitHub.
+2. Importa el proyecto en [vercel.com/new](https://vercel.com/new).
+3. Añade las variables `NEXT_PUBLIC_*` en *Project Settings → Environment Variables*.
+4. Deploy. Vercel detecta Next.js automáticamente.
+
+## Estructura
+
+```
+app/            layout (metadata es, fuentes, gtag) + page (ensambla secciones)
+components/     Header, Hero, TrustSection, Services, OversightBanner,
+                Pricing, Testimonials, Team, ContactSection, Footer,
+                WhatsAppButton, CallButton, Logo, Wave, Icon
+lib/clinic.ts   contenido editable de la clínica (fuente de verdad)
+lib/gtag.ts     helpers de GA4 / conversión de Google Ads
+referencia/     imágenes de referencia (rótulo real + tema Clinika)
+```

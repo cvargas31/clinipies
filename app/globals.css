@@ -1,26 +1,126 @@
 @import "tailwindcss";
 
+/* ------------------------------------------------------------------ */
+/*  CliniPies design tokens — navy + teal + white, wave-led identity   */
+/* ------------------------------------------------------------------ */
+@theme {
+  /* Brand palette (from the storefront logo) */
+  --color-navy: #0e2e59;
+  --color-navy-deep: #0a2444;
+  --color-teal: #1a9a9a;
+  --color-teal-bright: #27b7b7;
+  --color-mist: #eff7f8;
+  --color-mist-deep: #dceef0;
+  --color-ink: #0f2330;
+  --color-whatsapp: #25d366;
+  --color-whatsapp-dark: #1ebe5a;
+
+  /* Typefaces (wired in app/layout.tsx via next/font) */
+  --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+
+  /* Shared rhythm */
+  --radius-brand: 1.25rem;
+  --shadow-brand: 0 18px 40px -18px rgba(14, 46, 89, 0.35);
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: var(--color-ink);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden; /* evita scroll horizontal en móvil */
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* Anchor scroll offset so the sticky header never covers section titles */
+section[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Reusable brand utilities                                           */
+/* ------------------------------------------------------------------ */
+@utility container-page {
+  width: 100%;
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* The signature: a calm gradient that echoes the logo's wave */
+@utility brand-gradient {
+  background: linear-gradient(135deg, var(--color-navy-deep) 0%, var(--color-navy) 45%, var(--color-teal) 130%);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+/* Gentle entrance used sparingly on scroll reveals */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: rise-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Subtle float for the sticky WhatsApp pulse ring */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.pulse-ring {
+  animation: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  .reveal,
+  .pulse-ring {
+    animation: none !important;
+    scroll-behavior: auto;
+  }
+}
+
+/* Visible keyboard focus everywhere */
+:focus-visible {
+  outline: 3px solid var(--color-teal-bright);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
