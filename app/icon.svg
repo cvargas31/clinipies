@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CliniPies">
+  <!-- Fondo navy redondeado para que el logo se lea bien en la pestaña -->
+  <rect width="64" height="64" rx="14" fill="#0e2e59" />
+  <!-- Mano que acuna (cuenco) -->
+  <path
+    d="M16 40c0 9 7.5 15 16 15s16-6 16-15c0-2.4-2-4-4.2-3.1C40 38.3 36.2 39 32 39s-8-0.7-11.8-2.1C18 36 16 37.6 16 40Z"
+    fill="#27b7b7"
+  />
+  <!-- Talón de la huella -->
+  <path
+    d="M32 15c-4.8 0-8 3.8-8 9.2 0 4.8 3.4 8.3 8 8.3s8-3.5 8-8.3C40 18.8 36.8 15 32 15Z"
+    fill="#ffffff"
+  />
+  <!-- Dedos -->
+  <circle cx="24.5" cy="12.5" r="2.4" fill="#ffffff" />
+  <circle cx="30" cy="10" r="2.6" fill="#ffffff" />
+  <circle cx="36" cy="10.4" r="2.5" fill="#ffffff" />
+  <circle cx="41" cy="13" r="2.2" fill="#ffffff" />
+</svg>

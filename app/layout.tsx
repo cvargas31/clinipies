@@ -23,7 +23,12 @@ const description =
   clinic.address +
   ". Tratamos uña encarnada, callosidades, hongos, pie diabético y más. Pide tu cita por WhatsApp.";
 
+// URL pública del sitio (para que las imágenes de Open Graph/Twitter sean
+// absolutas). Configúrala en .env.local como NEXT_PUBLIC_SITE_URL.
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://clinipies.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: `${clinic.name} · ${clinic.tagline} | ${clinic.slogan}`,
   description,
   applicationName: clinic.name,
@@ -41,7 +46,8 @@ export const metadata: Metadata = {
     title: `${clinic.name} · ${clinic.tagline}`,
     description,
     type: "website",
-    locale: "es_ES",
+    locale: "es_PA",
+    url: siteUrl,
     siteName: clinic.name,
   },
   twitter: {
