@@ -7,7 +7,6 @@ import { BeforeAfter } from "@/components/BeforeAfter";
 import { OversightBanner } from "@/components/OversightBanner";
 import { Pricing } from "@/components/Pricing";
 import { Testimonials } from "@/components/Testimonials";
-import { Team } from "@/components/Team";
 import { ContactSection } from "@/components/ContactSection";
 import { Footer } from "@/components/Footer";
 import { StickyWhatsApp } from "@/components/WhatsAppButton";
@@ -21,7 +20,7 @@ const jsonLd = {
   description: `${clinic.tagline} — ${clinic.slogan}`,
   telephone: clinic.phoneHref,
   address: clinic.address,
-  openingHours: "Mo-Sa 09:00-18:00",
+  openingHours: "Mo-Sa 10:00-19:00",
   medicalSpecialty: "Podiatric",
   availableService: services.map((s) => ({
     "@type": "MedicalProcedure",
@@ -46,7 +45,6 @@ export default function Home() {
         <OversightBanner />
         <Pricing />
         <Testimonials />
-        <Team />
         <ContactSection />
       </main>
       <Footer />

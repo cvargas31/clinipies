@@ -12,10 +12,9 @@ export const clinic = {
   tagline: "Quiropedia Clínica",
   slogan: "Cuidamos tus pies, mejora tu vida",
 
-  // « » Reemplazar por el número real (formato internacional, solo dígitos)
-  whatsapp: "50760000000", // ej. 507 = Panamá + número de 8 dígitos
-  phoneDisplay: "+507 6000-0000",
-  phoneHref: "+50760000000",
+  whatsapp: "50767472895",
+  phoneDisplay: "+507 6747-2895",
+  phoneHref: "+50767472895",
   whatsappPrefill:
     "Hola 👋, quiero pedir una cita en CliniPies. ¿Tienen disponibilidad?",
 
@@ -26,7 +25,7 @@ export const clinic = {
   mapLinkUrl: "https://maps.google.com/?q=CliniPies",
 
   hours: [
-    { days: "Lunes a Sábado", time: "9:00 AM – 6:00 PM" },
+    { days: "Lunes a Sábado", time: "10:00 AM – 7:00 PM" },
     { days: "Domingo", time: "Cerrado" },
   ],
 
@@ -158,13 +157,6 @@ export const testimonials: {
     text: "El pedicure clínico es otro nivel. Mis pies quedaron sanos y el trato fue excelente de principio a fin.",
     location: "Paciente",
   },
-];
-
-/** Equipo de ejemplo — « » sustituir por el equipo real. */
-export const team: { name: string; role: string }[] = [
-  { name: "Dra. Laura Méndez", role: "Podóloga · Directora" },
-  { name: "Lic. Jorge Pérez", role: "Quiropedista clínico" },
-  { name: "Lic. Sofía Ramos", role: "Quiropedista clínica" },
 ];
 
 /**
