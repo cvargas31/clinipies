@@ -12,10 +12,9 @@ export const clinic = {
   tagline: "Quiropedia Clínica",
   slogan: "Cuidamos tus pies, mejora tu vida",
 
-  // « » Reemplazar por el número real (formato internacional, solo dígitos)
-  whatsapp: "50760000000", // ej. 507 = Panamá + número de 8 dígitos
-  phoneDisplay: "+507 6000-0000",
-  phoneHref: "+50760000000",
+  whatsapp: "50767472895",
+  phoneDisplay: "+507 6747-2895",
+  phoneHref: "+50767472895",
   whatsappPrefill:
     "Hola 👋, quiero pedir una cita en CliniPies. ¿Tienen disponibilidad?",
 
