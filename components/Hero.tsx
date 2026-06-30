@@ -31,7 +31,7 @@ export function Hero() {
         <div className="reveal text-white">
           <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold text-teal-bright ring-1 ring-white/15">
             <Footprints className="h-4 w-4" aria-hidden />
-            {clinic.tagline}
+            {clinic.name}
           </span>
 
           <h1 className="mt-5 text-balance text-4xl font-extrabold leading-[1.05] md:text-5xl lg:text-6xl">
