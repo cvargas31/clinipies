@@ -26,7 +26,7 @@ export const clinic = {
   mapLinkUrl: "https://maps.google.com/?q=CliniPies",
 
   hours: [
-    { days: "Lunes a Sábado", time: "9:00 AM – 6:00 PM" },
+    { days: "Lunes a Sábado", time: "10:00 AM – 7:00 PM" },
     { days: "Domingo", time: "Cerrado" },
   ],
 
@@ -158,13 +158,6 @@ export const testimonials: {
     text: "El pedicure clínico es otro nivel. Mis pies quedaron sanos y el trato fue excelente de principio a fin.",
     location: "Paciente",
   },
-];
-
-/** Equipo de ejemplo — « » sustituir por el equipo real. */
-export const team: { name: string; role: string }[] = [
-  { name: "Dra. Laura Méndez", role: "Podóloga · Directora" },
-  { name: "Lic. Jorge Pérez", role: "Quiropedista clínico" },
-  { name: "Lic. Sofía Ramos", role: "Quiropedista clínica" },
 ];
 
 /**

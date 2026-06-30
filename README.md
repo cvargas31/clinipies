@@ -20,8 +20,8 @@ Casi todo el texto y los datos viven en **`lib/clinic.ts`**:
 - **Teléfono y WhatsApp**: `clinic.whatsapp` (solo dígitos, formato internacional),
   `clinic.phoneDisplay`, `clinic.phoneHref` y `clinic.whatsappPrefill`.
 - **Dirección, horario y mapa**: `clinic.address`, `clinic.hours`, `clinic.mapEmbedUrl`.
-- **Servicios, tarifas, opiniones y equipo**: arrays `services`, `pricing`,
-  `testimonials`, `team`.
+- **Servicios, tarifas y opiniones**: arrays `services`, `pricing`,
+  `testimonials`.
 
 Los valores marcados con « » en los comentarios son **placeholders** que debes
 reemplazar por los reales (especialmente el número de WhatsApp y los precios).
@@ -61,7 +61,7 @@ Si las variables están vacías, el tracking se desactiva sin errores (útil en 
 ```
 app/            layout (metadata es, fuentes, gtag) + page (ensambla secciones)
 components/     Header, Hero, TrustSection, Services, OversightBanner,
-                Pricing, Testimonials, Team, ContactSection, Footer,
+                Pricing, Testimonials, ContactSection, Footer,
                 WhatsAppButton, CallButton, Logo, Wave, Icon
 lib/clinic.ts   contenido editable de la clínica (fuente de verdad)
 lib/gtag.ts     helpers de GA4 / conversión de Google Ads
