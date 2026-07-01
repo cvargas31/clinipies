@@ -1,10 +1,17 @@
 import { ImageResponse } from "next/og";
+import { readFileSync } from "fs";
+import { join } from "path";
 import { clinic } from "@/lib/clinic";
 
 // Metadatos de la imagen (Next los inyecta en <head> automáticamente)
 export const alt = `${clinic.name} · ${clinic.tagline} — ${clinic.slogan}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
+
+// Logo real de la marca (PNG transparente) leído desde /public y embebido
+// como data URI para que Satori pueda pintarlo dentro de la tarjeta.
+const logoData = readFileSync(join(process.cwd(), "public/logo.png"));
+const logoSrc = `data:image/png;base64,${logoData.toString("base64")}`;
 
 // Imagen que se muestra al compartir el enlace (WhatsApp, Facebook, X…)
 export default function OpengraphImage() {
@@ -38,38 +45,31 @@ export default function OpengraphImage() {
           }}
         />
 
-        {/* Logotipo */}
-        <svg width="180" height="180" viewBox="0 0 64 64">
-          <circle
-            cx="32"
-            cy="32"
-            r="29"
-            fill="none"
-            stroke="#ffffff"
-            strokeWidth="3"
-          />
-          <path
-            d="M16 38c0 9 7.5 15 16 15s16-6 16-15c0-2.4-2-4-4.2-3.1C40 36.3 36.2 37 32 37s-8-0.7-11.8-2.1C18 34 16 35.6 16 38Z"
-            fill="#27b7b7"
-          />
-          <path
-            d="M32 14c-4.8 0-8 3.8-8 9.2 0 4.8 3.4 8.3 8 8.3s8-3.5 8-8.3C40 17.8 36.8 14 32 14Z"
-            fill="#ffffff"
-          />
-          <circle cx="24.5" cy="11.5" r="2.4" fill="#ffffff" />
-          <circle cx="30" cy="9" r="2.6" fill="#ffffff" />
-          <circle cx="36" cy="9.4" r="2.5" fill="#ffffff" />
-          <circle cx="41" cy="12" r="2.2" fill="#ffffff" />
-        </svg>
+        {/* Logo real dentro de un disco blanco para que resalte sobre el fondo */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: 260,
+            height: 260,
+            borderRadius: 260,
+            background: "#ffffff",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.25)",
+          }}
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={logoSrc} width={200} height={200} alt="" />
+        </div>
 
         {/* Wordmark bicolor */}
         <div
           style={{
             display: "flex",
-            fontSize: 104,
+            fontSize: 96,
             fontWeight: 800,
             letterSpacing: "-0.03em",
-            marginTop: 24,
+            marginTop: 28,
             lineHeight: 1,
           }}
         >
@@ -80,12 +80,12 @@ export default function OpengraphImage() {
         {/* Tagline */}
         <div
           style={{
-            fontSize: 30,
+            fontSize: 28,
             fontWeight: 600,
             letterSpacing: "0.28em",
             textTransform: "uppercase",
             color: "rgba(255,255,255,0.78)",
-            marginTop: 18,
+            marginTop: 16,
           }}
         >
           {clinic.tagline}
@@ -94,10 +94,10 @@ export default function OpengraphImage() {
         {/* Slogan */}
         <div
           style={{
-            fontSize: 38,
+            fontSize: 36,
             fontWeight: 500,
             color: "#ffffff",
-            marginTop: 28,
+            marginTop: 24,
             maxWidth: 900,
           }}
         >

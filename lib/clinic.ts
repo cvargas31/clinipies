@@ -18,11 +18,12 @@ export const clinic = {
   whatsappPrefill:
     "Hola 👋, quiero pedir una cita en CliniPies. ¿Tienen disponibilidad?",
 
-  address: "Local 17, Plaza — junto a OrthoSmile",
-  // « » Reemplazar por el enlace real de Google Maps (modo embed)
+  address:
+    "San Miguelito, C.C. Los Andes Mall, Piso 1, local 136",
+  // Pin exacto de la clínica (coordenadas resueltas del enlace de Google Maps).
   mapEmbedUrl:
-    "https://www.google.com/maps?q=Panama&output=embed",
-  mapLinkUrl: "https://maps.google.com/?q=CliniPies",
+    "https://www.google.com/maps?q=9.0518435,-79.5083825&output=embed",
+  mapLinkUrl: "https://maps.app.goo.gl/mBcfpM72Te9rNvds8",
 
   hours: [
     { days: "Lunes a Sábado", time: "10:00 AM – 7:00 PM" },

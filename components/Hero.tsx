@@ -1,4 +1,4 @@
-import { Star, Clock, Footprints } from "lucide-react";
+import { Star, Clock, Footprints, ShieldCheck } from "lucide-react";
 import { WhatsAppButton } from "./WhatsAppButton";
 import { CallButton } from "./CallButton";
 import { LogoMark } from "./Logo";
@@ -86,6 +86,31 @@ export function Hero() {
                   "linear-gradient(to top, color-mix(in srgb, var(--color-teal) 35%, transparent), transparent)",
               }}
             />
+          </div>
+
+          {/* Tarjeta flotante: valoración (superior izquierda) */}
+          <div className="absolute -top-4 left-0 hidden rounded-2xl bg-white p-4 shadow-brand sm:block">
+            <div className="flex items-center gap-1.5">
+              <p className="text-2xl font-extrabold text-navy">5.0</p>
+              <span className="flex" aria-hidden>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="h-3.5 w-3.5 fill-amber-300 text-amber-300" />
+                ))}
+              </span>
+            </div>
+            <p className="text-sm font-medium text-ink/70">
+              pacientes satisfechos
+            </p>
+          </div>
+
+          {/* Tarjeta flotante: material esterilizado (lateral izquierdo) */}
+          <div className="absolute top-1/2 -left-4 hidden -translate-y-1/2 rounded-2xl bg-white p-4 shadow-brand md:block">
+            <ShieldCheck className="h-6 w-6 text-teal" aria-hidden />
+            <p className="mt-1.5 text-sm font-medium text-ink/70">
+              Material
+              <br />
+              esterilizado
+            </p>
           </div>
 
           {/* Tarjeta flotante de confianza */}

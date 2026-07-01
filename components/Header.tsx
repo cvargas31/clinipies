@@ -1,7 +1,6 @@
-import { Phone } from "lucide-react";
 import { Logo } from "./Logo";
 import { WhatsAppButton } from "./WhatsAppButton";
-import { clinic, telUrl } from "@/lib/clinic";
+import { clinic } from "@/lib/clinic";
 
 /**
  * Cabecera mínima: logo + enlaces de ancla + CTAs.
@@ -17,9 +16,9 @@ const navLinks = [
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-mist-deep/70 bg-white/90 backdrop-blur-md">
-      <div className="container-page flex h-16 items-center justify-between gap-4">
+      <div className="container-page flex h-20 items-center justify-between gap-4">
         <a href="#inicio" aria-label={`${clinic.name} — inicio`}>
-          <Logo />
+          <Logo markClassName="h-18 w-18" />
         </a>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Secciones">
@@ -35,13 +34,6 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href={telUrl}
-            className="hidden items-center gap-2 text-sm font-semibold text-navy transition-colors hover:text-teal sm:inline-flex"
-          >
-            <Phone className="h-4 w-4" strokeWidth={2.2} aria-hidden />
-            {clinic.phoneDisplay}
-          </a>
           <WhatsAppButton className="px-4 py-2.5 text-sm">
             <span className="hidden sm:inline">WhatsApp</span>
             <span className="sm:hidden">Cita</span>
