@@ -13,14 +13,6 @@ function InstagramIcon({ className }: { className?: string }) {
   );
 }
 
-function FacebookIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden>
-      <path d="M14 9h2.5V6H14c-2 0-3.5 1.5-3.5 3.5V11H8.5v3h2V21h3v-7h2.2l.3-3H13.5V9.6c0-.4.2-.6.5-.6Z" />
-    </svg>
-  );
-}
-
 /** Pie de página mínimo. */
 export function Footer() {
   return (
@@ -34,19 +26,10 @@ export function Footer() {
               href={clinic.social.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Instagram"
+              aria-label="Instagram @clinipiespanama"
               className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-teal"
             >
               <InstagramIcon className="h-5 w-5" />
-            </a>
-            <a
-              href={clinic.social.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-teal"
-            >
-              <FacebookIcon className="h-5 w-5" />
             </a>
           </div>
         </div>

@@ -32,8 +32,7 @@ export const clinic = {
   ],
 
   social: {
-    instagram: "https://instagram.com/clinipies",
-    facebook: "https://facebook.com/clinipies",
+    instagram: "https://instagram.com/clinipiespanama",
   },
 } as const;
 
