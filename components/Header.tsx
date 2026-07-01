@@ -8,6 +8,7 @@ import { clinic } from "@/lib/clinic";
  */
 const navLinks = [
   { href: "#servicios", label: "Servicios" },
+  { href: "#domicilio", label: "A domicilio" },
   { href: "#tarifas", label: "Tarifas" },
   { href: "#opiniones", label: "Opiniones" },
   { href: "#contacto", label: "Contacto" },

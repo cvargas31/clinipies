@@ -19,8 +19,9 @@ export function Pricing() {
               Precios claros, sin sorpresas
             </h2>
             <p className="mt-4 text-lg text-ink/70">
-              Estos son nuestros precios de referencia. El costo final depende de
-              tu valoración. Escríbenos y te confirmamos al instante.
+              Estos son nuestros precios de referencia (no incluyen ITBMS). El
+              costo final depende de tu valoración. Escríbenos y te confirmamos
+              al instante.
             </p>
             <WhatsAppButton className="mt-6">
               Consultar mi tratamiento

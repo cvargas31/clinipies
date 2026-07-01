@@ -31,20 +31,12 @@ export function Logo({
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
       <LogoMark className={`${markClassName} shrink-0`} />
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-xl font-extrabold tracking-tight">
-          <span style={{ color: onDark ? "#ffffff" : "var(--color-navy)" }}>
-            {clinic.nameParts.dark}
-          </span>
-          <span style={{ color: "var(--color-teal-bright)" }}>
-            {clinic.nameParts.accent}
-          </span>
+      <span className="font-display text-xl font-extrabold leading-none tracking-tight">
+        <span style={{ color: onDark ? "#ffffff" : "var(--color-navy)" }}>
+          {clinic.nameParts.dark}
         </span>
-        <span
-          className="text-[0.6rem] font-semibold uppercase tracking-[0.22em]"
-          style={{ color: onDark ? "rgba(255,255,255,0.7)" : "var(--color-teal)" }}
-        >
-          {clinic.tagline}
+        <span style={{ color: "var(--color-teal-bright)" }}>
+          {clinic.nameParts.accent}
         </span>
       </span>
     </span>

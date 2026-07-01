@@ -10,6 +10,7 @@ export const clinic = {
   name: "CliniPies",
   nameParts: { dark: "Clini", accent: "Pies" }, // para el logo bicolor
   tagline: "Quiropedia Clínica",
+  heroBadge: "Centro de Quiropedia",
   slogan: "Cuidamos tus pies, mejora tu vida",
 
   whatsapp: "50767472895",
@@ -122,20 +123,47 @@ export const trustPoints: { title: string; description: string; icon: string }[]
   },
 ];
 
-/** Tarifas de ejemplo — « » el cliente debe poner sus precios reales. */
+/**
+ * Tarifas reales (lista de la clínica). Los precios NO incluyen ITBMS (7%).
+ * Son los 7 tratamientos principales; la lista completa tiene más servicios.
+ */
 export const pricing: {
   service: string;
   price: string;
   featured?: boolean;
 }[] = [
-  { service: "Pedicure clínico", price: "$25" },
-  { service: "Uña encarnada", price: "$35", featured: true },
-  { service: "Callosidades / durezas", price: "$28" },
-  { service: "Verrugas plantares", price: "Desde $40" },
-  { service: "Hongos en uñas", price: "Desde $30" },
-  { service: "Pie diabético (revisión)", price: "$30" },
-  { service: "Masaje podal", price: "$22" },
+  { service: "Quiropedia (pies sanos)", price: "$35" },
+  { service: "Uñas encarnadas (por lateral)", price: "$55", featured: true },
+  { service: "Quiropedia pie diabético", price: "Desde $45" },
+  { service: "Remoción de callos y durezas", price: "$22.50" },
+  { service: "Verrugas plantares (por sesión)", price: "$25" },
+  { service: "Hongos en uñas (por dedo)", price: "Desde $10.50" },
+  { service: "Ortonixia (colocación inicial)", price: "$60" },
 ];
+
+/** Servicio de quiropedia clínica a domicilio (bloque destacado en el inicio). */
+export const homeService = {
+  title: "Servicio de Quiropedia Clínica a Domicilio",
+  subtitle:
+    "Llevamos el cuidado profesional de tus pies hasta la comodidad de tu hogar.",
+  idealFor: [
+    "Adultos mayores",
+    "Personas con movilidad reducida",
+    "Pacientes diabéticos",
+    "Personas con discapacidad",
+    "Personas con poco tiempo para desplazarse",
+  ],
+  services: [
+    "Pedicure clínico",
+    "Tratamiento de uñas encarnadas",
+    "Remoción de callosidades",
+    "Tratamiento de hongos en uñas",
+    "Corte terapéutico de uñas",
+    "Atención preventiva para pie diabético",
+  ],
+  whatsappPrefill:
+    "Hola 👋, quiero agendar una cita a domicilio de Quiropedia Clínica con CliniPies. ¿Tienen disponibilidad?",
+} as const;
 
 /** Opiniones de ejemplo — « » sustituir por reseñas reales. */
 export const testimonials: {

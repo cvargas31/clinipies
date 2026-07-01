@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { TrustSection } from "@/components/TrustSection";
 import { Services } from "@/components/Services";
+import { HomeService } from "@/components/HomeService";
 import { Gallery } from "@/components/Gallery";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { OversightBanner } from "@/components/OversightBanner";
@@ -41,6 +42,7 @@ export default function Home() {
         <BeforeAfter />
         <TrustSection />
         <Services />
+        <HomeService />
         <Gallery />
         <OversightBanner />
         <Pricing />
