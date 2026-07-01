@@ -66,7 +66,7 @@ export function WhatsAppButton({
       onClick={handleClick}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-base font-semibold transition-all duration-200 ${
+      className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-base font-semibold transition-[transform,background-color,box-shadow,color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] ${
         variants[variant]
       } ${fullWidth ? "w-full" : ""} ${className}`}
     >
@@ -94,7 +94,7 @@ export function StickyWhatsApp() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escríbenos por WhatsApp"
-      className="fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-brand transition-transform duration-200 hover:scale-105 md:h-16 md:w-16"
+      className="fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-whatsapp text-white shadow-brand transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:scale-105 active:scale-95 md:h-16 md:w-16"
     >
       <span className="pulse-ring absolute inset-0 rounded-full bg-whatsapp" />
       <WhatsAppIcon className="relative h-7 w-7 md:h-8 md:w-8" />

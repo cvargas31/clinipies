@@ -27,10 +27,19 @@
 :root {
   --background: #ffffff;
   --foreground: var(--color-ink);
+
+  /* Curvas de easing propias — las de CSS son demasiado suaves y restan
+     intención al movimiento. (cf. easing.dev) */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
-* {
+/* Scroll suave al saltar a un ancla + espacio bajo la cabecera fija.
+   Va en `html` (el contenedor de scroll del documento), no en `*`. */
+html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
 }
 
 body {
@@ -39,7 +48,9 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden; /* evita scroll horizontal en móvil */
+  /* `clip` evita el scroll horizontal en móvil SIN convertir al body en un
+     contenedor de scroll (lo que `hidden` sí hace y rompe el scroll suave). */
+  overflow-x: clip;
 }
 
 h1,
@@ -74,7 +85,7 @@ section[id] {
   text-wrap: balance;
 }
 
-/* Gentle entrance used sparingly on scroll reveals */
+/* Entrada suave del hero (visible al cargar, por encima del pliegue) */
 @keyframes rise-in {
   from {
     opacity: 0;
@@ -87,7 +98,77 @@ section[id] {
 }
 
 .reveal {
-  animation: rise-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: rise-in 0.6s var(--ease-out) both;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Scroll reveals — se disparan al entrar en viewport (una sola vez).  */
+/*  Usamos transiciones (no keyframes) para que sean interrumpibles y   */
+/*  respeten prefers-reduced-motion sin lógica extra.                   */
+/* ------------------------------------------------------------------ */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s var(--ease-out),
+    transform 0.6s var(--ease-out);
+}
+
+[data-reveal="shown"] {
+  opacity: 1;
+  transform: none;
+}
+
+/* Variante en grupo: escalona los hijos directos (efecto cascada). */
+[data-reveal-group] > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.5s var(--ease-out),
+    transform 0.5s var(--ease-out);
+}
+
+[data-reveal-group="shown"] > * {
+  opacity: 1;
+  transform: none;
+}
+
+[data-reveal-group="shown"] > *:nth-child(2) { transition-delay: 60ms; }
+[data-reveal-group="shown"] > *:nth-child(3) { transition-delay: 120ms; }
+[data-reveal-group="shown"] > *:nth-child(4) { transition-delay: 180ms; }
+[data-reveal-group="shown"] > *:nth-child(5) { transition-delay: 240ms; }
+[data-reveal-group="shown"] > *:nth-child(6) { transition-delay: 300ms; }
+
+/* ------------------------------------------------------------------ */
+/*  Menú móvil — entra desde arriba (ease-out), sale más rápido.       */
+/* ------------------------------------------------------------------ */
+.mobile-panel {
+  transform-origin: top center;
+  transition:
+    opacity 0.22s var(--ease-out),
+    transform 0.24s var(--ease-drawer);
+}
+
+.mobile-panel[data-state="closed"] {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.98);
+}
+
+.mobile-panel[data-state="open"] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.mobile-backdrop {
+  transition: opacity 0.2s var(--ease-out);
+}
+
+.mobile-backdrop[data-state="closed"] {
+  opacity: 0;
+}
+
+.mobile-backdrop[data-state="open"] {
+  opacity: 1;
 }
 
 /* Subtle float for the sticky WhatsApp pulse ring */
@@ -110,11 +191,25 @@ section[id] {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   .reveal,
   .pulse-ring {
     animation: none !important;
     scroll-behavior: auto;
+  }
+
+  /* Mantener la comprensión (opacidad) pero eliminar todo movimiento. */
+  [data-reveal],
+  [data-reveal-group] > *,
+  .mobile-panel,
+  .mobile-backdrop {
+    opacity: 1 !important;
+    transform: none !important;
+    transition-duration: 0.01ms !important;
   }
 }
 

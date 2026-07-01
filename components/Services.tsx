@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Icon } from "./Icon";
 import { WhatsAppButton } from "./WhatsAppButton";
+import { Reveal } from "./Reveal";
 import { services } from "@/lib/clinic";
 
 /** Servicios reales de la clínica en tarjetas con icono. */
@@ -8,7 +9,7 @@ export function Services() {
   return (
     <section id="servicios" className="bg-white py-16 md:py-24">
       <div className="container-page">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <span className="text-sm font-bold uppercase tracking-[0.18em] text-teal">
             Nuestros servicios
           </span>
@@ -18,9 +19,9 @@ export function Services() {
           <p className="mt-4 text-lg text-ink/70">
             Toca cualquier servicio y escríbenos por WhatsApp para reservar.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <Reveal group className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((s) => (
             <article
               key={s.name}
@@ -39,11 +40,14 @@ export function Services() {
                 className="mt-5 self-start px-4 py-2 text-sm"
               >
                 Consultar
-                <ArrowRight className="h-4 w-4" aria-hidden />
+                <ArrowRight
+                  className="h-4 w-4 transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-0.5"
+                  aria-hidden
+                />
               </WhatsAppButton>
             </article>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

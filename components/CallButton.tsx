@@ -21,7 +21,7 @@ export function CallButton({
   return (
     <a
       href={telUrl}
-      className={`inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3.5 text-base font-semibold transition-colors duration-200 ${variants[variant]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-full border px-6 py-3.5 text-base font-semibold transition-[transform,background-color,color,border-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] ${variants[variant]} ${className}`}
     >
       <Phone className="h-5 w-5" strokeWidth={2.2} aria-hidden />
       {label ?? `Llamar ${clinic.phoneDisplay}`}

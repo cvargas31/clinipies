@@ -1,4 +1,5 @@
 import { Icon } from "./Icon";
+import { Reveal } from "./Reveal";
 import { trustPoints, clinic } from "@/lib/clinic";
 
 /** “¿Por qué elegirnos?” — puntos de confianza sobre fondo claro. */
@@ -6,7 +7,7 @@ export function TrustSection() {
   return (
     <section id="confianza" className="bg-mist pb-16 pt-4 md:pb-20">
         <div className="container-page">
-          <div className="mx-auto max-w-2xl text-center">
+          <Reveal className="mx-auto max-w-2xl text-center">
             <span className="text-sm font-bold uppercase tracking-[0.18em] text-teal">
               ¿Por qué elegirnos?
             </span>
@@ -17,9 +18,9 @@ export function TrustSection() {
               En {clinic.name} combinamos higiene clínica, experiencia y un trato
               cercano para que camines sin dolor.
             </p>
-          </div>
+          </Reveal>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <Reveal group className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {trustPoints.map((p) => (
               <div
                 key={p.title}
@@ -34,7 +35,7 @@ export function TrustSection() {
                 </p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
   );

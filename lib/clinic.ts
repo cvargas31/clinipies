@@ -227,12 +227,56 @@ export const gallery: {
   { label: "Pedicure clínico", src: pexels(34930123), tone: "mist" },
   { label: "Callosidades", src: pexels(9475414), tone: "navy" },
   { label: "Hongos en uñas", src: pexels(17056221), tone: "teal" },
-  { label: "Pie diabético", src: pexels(10157945), tone: "mist", tall: true },
-  { label: "Verrugas plantares", src: pexels(8070278), tone: "navy" },
-  { label: "Pie de atleta", src: pexels(4960359), tone: "teal" },
+  { label: "Pie diabético", src: "/img/pie-diabetico.webp", tone: "mist", tall: true },
+  { label: "Verrugas plantares", src: "/img/verruga-plantar.jpg", tone: "navy" },
+  { label: "Pie de atleta", src: "/img/pie-de-atleta.jpg", tone: "teal" },
   { label: "Masaje podal", src: pexels(3865561), tone: "mist" },
   { label: "Durezas y helomas", src: pexels(19695948), tone: "navy" },
-  { label: "Manicure clínico", src: pexels(17056222), tone: "teal" },
+  { label: "Manicure clínico", src: "/img/manicure-clinico.jpg", tone: "teal" },
+];
+
+/**
+ * Medidas de bioseguridad e higiene clínica. Se muestran tanto en la sección
+ * del landing (`components/Biosecurity.tsx`) como en la página `/bioseguridad`.
+ * Los `icon` deben existir en el mapa de `components/Icon.tsx`.
+ */
+export const biosecurity: { icon: string; title: string; description: string }[] = [
+  {
+    icon: "shield-check",
+    title: "Esterilización en autoclave",
+    description:
+      "Todo el instrumental se esteriliza en autoclave después de cada uso, eliminando bacterias, hongos y virus.",
+  },
+  {
+    icon: "shield-plus",
+    title: "Material desechable",
+    description:
+      "Guantes, hojas y limas de un solo uso, individuales para cada paciente. Nada se reutiliza.",
+  },
+  {
+    icon: "sparkles",
+    title: "Superficies desinfectadas",
+    description:
+      "Camilla, equipos y superficies se desinfectan entre un paciente y el siguiente.",
+  },
+  {
+    icon: "droplet",
+    title: "Higiene de manos",
+    description:
+      "Lavado clínico y gel antibacterial antes y después de cada tratamiento.",
+  },
+  {
+    icon: "user-check",
+    title: "Personal capacitado",
+    description:
+      "Seguimos protocolos de asepsia y bioseguridad en cada procedimiento.",
+  },
+  {
+    icon: "activity",
+    title: "Ambiente controlado",
+    description:
+      "Ventilación y limpieza constante para un entorno seguro y tranquilo.",
+  },
 ];
 
 /** Construye el enlace de WhatsApp con el mensaje pre-rellenado. */
