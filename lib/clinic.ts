@@ -131,7 +131,7 @@ export const pricing: {
   price: string;
   featured?: boolean;
 }[] = [
-  { service: "Quiropedia (pies sanos)", price: "$35" },
+  { service: "Quiropedia (pies sanos)", price: "$45" },
   { service: "Uñas encarnadas (por lateral)", price: "$55", featured: true },
   { service: "Quiropedia pie diabético", price: "Desde $45" },
   { service: "Remoción de callos y durezas", price: "$22.50" },
