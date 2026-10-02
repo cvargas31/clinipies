@@ -39,11 +39,15 @@ declare global {
 export function reportWhatsAppConversion(): void {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;
 
-  // Evento de GA4 para medir el embudo.
-  window.gtag("event", "contacto_whatsapp", {
-    event_category: "engagement",
-    event_label: "whatsapp_click",
-  });
+  // Evento de GA4 para medir el embudo. Solo si hay propiedad de GA4: sin
+  // ella el evento acaba únicamente en Google Ads, que lo autodetecta como
+  // una conversión aparte y duplica el conteo de cada clic.
+  if (GA_ID) {
+    window.gtag("event", "contacto_whatsapp", {
+      event_category: "engagement",
+      event_label: "whatsapp_click",
+    });
+  }
 
   // Conversión de Google Ads.
   if (GADS_ID && GADS_CONVERSION_LABEL) {
