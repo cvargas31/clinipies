@@ -28,42 +28,27 @@ declare global {
 }
 
 /**
- * Reporta la conversión de Google Ads (clic en WhatsApp) y luego ejecuta
- * el callback de navegación. Si no hay IDs configurados, navega de inmediato.
+ * Reporta el clic en WhatsApp a GA4 y a Google Ads.
+ *
+ * No bloquea la navegación: el enlace abre `wa.me` en una pestaña nueva de
+ * forma nativa (gesto directo del usuario), así que la página actual sigue
+ * viva y a las peticiones de gtag les sobra tiempo para salir. Interceptar
+ * el clic para navegar desde un callback haría que Safari en iOS bloquease
+ * la apertura por considerarla un popup.
  */
-export function reportWhatsAppConversion(onDone: () => void): void {
-  const canTrack =
-    typeof window !== "undefined" &&
-    typeof window.gtag === "function" &&
-    GADS_ID &&
-    GADS_CONVERSION_LABEL;
+export function reportWhatsAppConversion(): void {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
 
-  // Evento de GA4 (siempre que haya gtag) para medir el embudo.
-  if (typeof window !== "undefined" && typeof window.gtag === "function") {
-    window.gtag("event", "contacto_whatsapp", {
-      event_category: "engagement",
-      event_label: "whatsapp_click",
-    });
-  }
-
-  if (!canTrack) {
-    onDone();
-    return;
-  }
-
-  // Conversión de Google Ads con callback para no perder el clic.
-  let navigated = false;
-  const go = () => {
-    if (navigated) return;
-    navigated = true;
-    onDone();
-  };
-
-  window.gtag!("event", "conversion", {
-    send_to: `${GADS_ID}/${GADS_CONVERSION_LABEL}`,
-    event_callback: go,
+  // Evento de GA4 para medir el embudo.
+  window.gtag("event", "contacto_whatsapp", {
+    event_category: "engagement",
+    event_label: "whatsapp_click",
   });
 
-  // Salvaguarda: si el callback no llega (bloqueador), navega igual.
-  window.setTimeout(go, 800);
+  // Conversión de Google Ads.
+  if (GADS_ID && GADS_CONVERSION_LABEL) {
+    window.gtag("event", "conversion", {
+      send_to: `${GADS_ID}/${GADS_CONVERSION_LABEL}`,
+    });
+  }
 }

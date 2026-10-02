@@ -35,8 +35,8 @@ const variants: Record<Variant, string> = {
 };
 
 /**
- * Botón/enlace de WhatsApp. Al hacer clic dispara la conversión de Google Ads
- * (lib/gtag) y luego abre el chat con el mensaje pre-rellenado.
+ * Botón/enlace de WhatsApp. El enlace abre el chat con el mensaje
+ * pre-rellenado; el clic reporta la conversión a Google Ads (lib/gtag).
  */
 export function WhatsAppButton({
   children = "Pedir cita por WhatsApp",
@@ -53,17 +53,10 @@ export function WhatsAppButton({
 }) {
   const href = whatsappUrl(message);
 
-  function handleClick(e: React.MouseEvent<HTMLAnchorElement>) {
-    e.preventDefault();
-    reportWhatsAppConversion(() => {
-      window.open(href, "_blank", "noopener,noreferrer");
-    });
-  }
-
   return (
     <a
       href={href}
-      onClick={handleClick}
+      onClick={reportWhatsAppConversion}
       target="_blank"
       rel="noopener noreferrer"
       className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-base font-semibold transition-[transform,background-color,box-shadow,color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] ${
@@ -80,17 +73,10 @@ export function WhatsAppButton({
 export function StickyWhatsApp() {
   const href = whatsappUrl();
 
-  function handleClick(e: React.MouseEvent<HTMLAnchorElement>) {
-    e.preventDefault();
-    reportWhatsAppConversion(() => {
-      window.open(href, "_blank", "noopener,noreferrer");
-    });
-  }
-
   return (
     <a
       href={href}
-      onClick={handleClick}
+      onClick={reportWhatsAppConversion}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escríbenos por WhatsApp"
