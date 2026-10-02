@@ -39,7 +39,7 @@
    Va en `html` (el contenedor de scroll del documento), no en `*`. */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: 7.5rem;
 }
 
 body {
@@ -63,7 +63,7 @@ h3,
 
 /* Anchor scroll offset so the sticky header never covers section titles */
 section[id] {
-  scroll-margin-top: 5.5rem;
+  scroll-margin-top: 7.5rem;
 }
 
 /* ------------------------------------------------------------------ */

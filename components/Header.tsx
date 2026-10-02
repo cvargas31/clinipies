@@ -24,13 +24,13 @@ const navLinks = [
 export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-mist-deep/70 bg-white/90 backdrop-blur-md">
-      <div className="container-page flex h-20 items-center justify-between gap-4">
+      <div className="container-page flex h-24 items-center justify-between gap-4 md:h-28">
         <Link
           href="/#inicio"
           aria-label={`${clinic.name} — inicio`}
           className="min-w-0 shrink"
         >
-          <Logo markClassName="h-12 w-12 md:h-18 md:w-18" />
+          <Logo markClassName="h-16 w-16 md:h-24 md:w-24" />
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Secciones">
