@@ -27,7 +27,8 @@ export const clinic = {
   mapLinkUrl: "https://maps.app.goo.gl/mBcfpM72Te9rNvds8",
 
   hours: [
-    { days: "Lunes a Sábado", time: "10:00 AM – 7:00 PM" },
+    { days: "Lunes a Viernes", time: "10:00 AM – 7:00 PM" },
+    { days: "Sábado", time: "9:00 AM – 6:00 PM" },
     { days: "Domingo", time: "Cerrado" },
   ],
 
@@ -132,7 +133,7 @@ export const pricing: {
   featured?: boolean;
 }[] = [
   { service: "Quiropedia (pies sanos)", price: "$45" },
-  { service: "Uñas encarnadas (por lateral)", price: "$55", featured: true },
+  { service: "Uñas encarnadas (por lateral)", price: "$65", featured: true },
   { service: "Quiropedia pie diabético", price: "Desde $45" },
   { service: "Remoción de callos y durezas", price: "$22.50" },
   { service: "Verrugas plantares (por sesión)", price: "$25" },

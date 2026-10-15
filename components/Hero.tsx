@@ -63,7 +63,10 @@ export function Hero() {
             </span>
             <span className="inline-flex items-center gap-1.5">
               <Clock className="h-4 w-4 text-teal-bright" aria-hidden />
-              {clinic.hours[0].days}: {clinic.hours[0].time}
+              {clinic.hours
+                .filter((h) => h.time !== "Cerrado")
+                .map((h) => `${h.days}: ${h.time}`)
+                .join(" · ")}
             </span>
           </div>
         </div>

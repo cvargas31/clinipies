@@ -21,7 +21,7 @@ const jsonLd = {
   description: `${clinic.tagline} — ${clinic.slogan}`,
   telephone: clinic.phoneHref,
   address: clinic.address,
-  openingHours: "Mo-Sa 10:00-19:00",
+  openingHours: ["Mo-Fr 10:00-19:00", "Sa 09:00-18:00"],
   medicalSpecialty: "Podiatric",
   availableService: services.map((s) => ({
     "@type": "MedicalProcedure",
